@@ -7,7 +7,7 @@ const factory = require('./handlerFactory');
 exports.setTourUserIds = (req, res, next) => {
   if (!req.body.author) req.body.author = req.user.id;
   if (!req.body.tour) req.body.tour = req.params.tourId;
-  console.log('set');
+  // console.log('set');
   next();
 };
 exports.allReviews = factory.getAll(Review);

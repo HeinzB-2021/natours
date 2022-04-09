@@ -8,7 +8,7 @@ const handleCastErrorDB = (err) => {
 const handleDuplicateFieldsDB = (err) => {
   const value = err.errmsg.match(/"(.*?)"/)[1];
   const message = `Name: '${value}' schon vergeben`;
-  console.log(value);
+  // console.log(value);
   return new AppError(message, 400);
 };
 

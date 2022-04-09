@@ -166,7 +166,7 @@ exports.getToursWithin = catchAsync(async (req, res, next) => {
     next(new AppError('Bitte Breiten- und Längengrad eingeben', 400));
   }
 
-  console.log(radius);
+  // console.log(radius);
 
   const tours = await Tour.find({
     startLocation: {

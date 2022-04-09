@@ -47,7 +47,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   });
 
   const url = `${req.protocol}://${req.get('host')}/me`;
-  console.log(url);
+  // console.log(url);
   await new Email(newUser, url).sendWelcome();
   createSendToken(newUser, 201, 'success', res);
 
@@ -101,7 +101,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     req.headers.authorization.startsWith('Bearer')
   ) {
     token = req.headers.authorization.split(' ')[1];
-    console.log(token);
+    // console.log(token);
   } else if (req.cookies.jwt) {
     token = req.cookies.jwt;
   }
@@ -122,7 +122,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
   req.user = currentUser;
   res.locals.user = currentUser;
-  console.log('jo');
+  // console.log('jo');
   next();
 });
 
@@ -158,10 +158,10 @@ exports.isLoggedIn = async (req, res, next) => {
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
-      console.log('no');
+      // console.log('no');
       return next(new AppError(' nicht berechtigt', 403));
     }
-    console.log('restr');
+    // console.log('restr');
     next();
   };
 };
@@ -182,7 +182,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     const resetURL = `${req.protocol}://${req.get(
       'host'
     )}/api/v1/users/resetPassword/${resetToken}`;
-    
+
     await new Email(user, resetURL).sendPasswordReset();
     // await sendMail({
     //   email: user.email,

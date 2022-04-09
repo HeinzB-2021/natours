@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
+const compression = require('compression');
 //const helmet = require('helmet');
 const hpp = require('hpp');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -108,6 +109,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(compression());
 //routes
 
 app.use('/api/v1/tours', tourRouter);

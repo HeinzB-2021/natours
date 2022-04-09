@@ -13,7 +13,7 @@ const bookBt = document.getElementById('book-tour');
 
 if (mapBox) {
   const loc = JSON.parse(mapBox.dataset.locations);
-  console.log(mapBox.dataset.locations);
+  // console.log(mapBox.dataset.locations);
   displayMap(loc);
 }
 
@@ -40,7 +40,7 @@ if (updateDataForm) {
     form.append('name', document.getElementById('name').value);
     form.append('email', document.getElementById('email').value);
     form.append('photo', document.getElementById('photo').files[0]);
-    console.log(form);
+    // console.log(form);
 
     updateSettings(form, 'data');
   });
@@ -48,7 +48,7 @@ if (updateDataForm) {
 
 if (updatePasswordForm) {
   updatePasswordForm.addEventListener('submit', async (e) => {
-    console.log('da');
+    // console.log('da');
     e.preventDefault();
     document.querySelector('.btn-save-pw').textContent = 'Updating...';
     const orgPassword = document.getElementById('password-current').value;

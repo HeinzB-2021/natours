@@ -25,14 +25,14 @@ mongoose
     useUnifiedTopology: true,
   })
   .then((con) => {
-    console.log('DB-Verbindung erfolgreich');
+    // console.log('DB-Verbindung erfolgreich');
   });
 
 //console.log(process.env);
 //Start the server
 const port = process.env.PORT || 8000;
 const server = app.listen(port, () => {
-  console.log(`App läuft auf Port ${port}...`);
+  // console.log(`App läuft auf Port ${port}...`);
 });
 
 //nicht eingelöste async promises

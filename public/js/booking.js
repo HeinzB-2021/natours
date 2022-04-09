@@ -6,12 +6,10 @@ export const bookTour = async (tourId) => {
     'pk_test_51KmG2QC90PvuAjkPkuwXjWm3WBtqfrlLQ7mJoxi1BwYJLuFtgSmXJInbdhoKPhZjDwwtMubcJlMLjYfm9gBcYFYy00nfA716W2'
   );
   try {
-    const session = await axios(
-      `http://localhost:8000/api/v1/booking/checkout-session/${tourId}`
-    );
+    const session = await axios(`/api/v1/booking/checkout-session/${tourId}`);
     await stripe.redirectToCheckout({ sessionId: session.data.session.id });
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     showAlert('error', 'Booking hat nicht geklappt');
   }
 };
