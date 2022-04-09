@@ -1,0 +1,10 @@
+*in neuen terminal einfügen
+*im script die benötigten awaits aus-bzw.einkommentieren
+*--delete und --import
+
+*entfernen
+node ./dev-data/data/import-dev-data.js --delete
+
+*importieren
+
+node ./dev-data/data/import-dev-data.js --import
