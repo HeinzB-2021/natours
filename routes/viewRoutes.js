@@ -5,9 +5,11 @@ const bookingController = require('./../controllers/bookingController');
 
 const router = express.Router();
 
-router
-  .route('/')
-  .get(bookingController.createBookingCheckout, viewsController.getOverview);
+// router
+//   .route('/')
+//   .get(bookingController.createBookingCheckout, viewsController.getOverview);
+
+router.route('/').get(viewsController.getOverview);
 
 router
   .route('/tour/:slug')

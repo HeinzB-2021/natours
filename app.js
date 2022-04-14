@@ -8,9 +8,11 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
 const appError = require('./utils/appError');
 const errorHandler = require('./controllers/errorController');
+const bookingController = require('./controllers/bookingController');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
@@ -84,6 +86,12 @@ const limiter = rateLimit({
 });
 
 app.use('/api', limiter);
+
+app.post(
+  'webhook-checkout',
+  bodyParser.raw({ type: 'application/json' }),
+  bookingController.webhooksCheckout
+);
 
 // body parser, reading data from body into req.body und check die größe
 app.use(express.json({ limit: '10kb' }));
